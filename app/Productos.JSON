@@ -1,0 +1,32 @@
+[
+  {
+    "nombre": "Churrasquitos",
+    "categoria": "Comida",
+    "precio": "10",
+    "stock": "100"
+  },
+  {
+    "nombre": "Tacos",
+    "categoria": "Comida",
+    "precio": "10",
+    "stock": "100"
+  },
+  {
+    "nombre": "Atol",
+    "categoria": "Comida",
+    "precio": "10",
+    "stock": "100"
+  },
+  {
+    "nombre": "Tortillas de Harina",
+    "categoria": "Comida",
+    "precio": "10",
+    "stock": "100"
+  },
+  {
+    "nombre": "Chuchitos",
+    "categoria": "Comida",
+    "precio": "10",
+    "stock": "100"
+  }
+]
