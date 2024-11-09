@@ -1,14 +1,15 @@
 {
-  "name": "smartconferencewebprototipe",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Ismael Liquez",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "boxicons": "^2.1.4"
-  }
+    "name": "smartconferencewebprototipe",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js"
+    },
+    "author": "Ismael Liquez",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "boxicons": "^2.1.4"
+    }
 }

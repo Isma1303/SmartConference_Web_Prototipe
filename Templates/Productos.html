@@ -1,88 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Smart Conference</title>
+        <link rel="stylesheet" href="/Css/ProductStylee.css" />
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Conference</title>
-    <link rel="stylesheet" href="/Css/ProductStylee.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <body>
+        <header>
+            <nav>
+                <div class="nav container">
+                    <a href="#" class="logo">Smart</a>
+                    <i class="bx bx-shopping-bag" id="cart-icon"></i>
+                </div>
+            </nav>
+        </header>
 
-
-</head>
-
-<body>
-    <header>
-        <nav>
-            <div class="nav container">
-                <a href="#" class="logo">Smart</a>
-                <i class="bx bx-shopping-bag" id='cart-icon'></i>
-            </div>
-
-        </nav>
-    </header>
-
-    <section class="shop container">
-        <h2 class="section-title">Productos</h2>
-        <div class="shop-content">
-            <div class="product-box">
-                <img src="/Image/73475146_2468461183244422_8546916487326072832_n.jpg" alt="" class="product-img">
-                <h2 class="product-title">Tostadas</h2>
-                <span class="price">Q10</span>
-                <i class='bx bx shopping-bag add'></i>
-
-            </div>
-            <div class="product-box">
-                <img src="/Image/73475146_2468461183244422_8546916487326072832_n.jpg" alt="" class="product-img">
-                <h2 class="product-title">Atol</h2>
-                <span class="price">Q10</span>
-                <i class='bx bx shopping-bag add'></i>
-
-            </div>
-            <div class="product-box">
-                <img src="/Image/Tostadas.jpg" alt="" class="product-img">
-                <h2 class="product-title">Churrasquitos</h2>
-                <span class="price">Q10</span>
-                <box-icon class='bx bx shopping-bag add'></box-icon>
-
-            </div>
-            <div class="product-box">
-                <img src="/Image/Tostadas.jpg" alt="" class="product-img">
-                <h2 class="product-title">Tortillas de Harina</h2>
-                <span class="price">Q10</span>
-                <i name='bx bx shopping-bag add'></i>
-
-            </div>
-            <div class="product-box">
-                <img src="/Image/Tostadas.jpg" alt="" class="product-img">
-                <h2 class="product-title">Tacos</h2>
-                <span class="price">Q10</span>
-                <box-icon name='bx bx shopping-bag add '></box-icon>
-
-            </div>
-            <div class="product-box">
-                <img src="/Image/Tostadas.jpg" alt="" class="product-img">
-                <h2 class="product-title">Tacos</h2>
-                <span class="price">Q10</span>
-                <box-icon name='bx bx shopping-bag add'></box-icon>
-
+        <section class="shop container">
+            <h2 class="section-title">Productos</h2>
+            <div id="products" class="shop-content"></div>
+        </section>
+        <div class="cart">
+            <h2 class="cart-title">Tu Carrito</h2>
+            <i class="bx bxs-trash-alt" id="trash-slot"></i>
+            <div class="cart-content">
+                <div class="total">
+                    <div class="total-title">Total</div>
+                    <div class="total-price">Q0</div>
+                </div>
+                <button type="button" class="btn-buy">Comprar</button>
+                <i class="bx bx-x" id="close-cart"></i>
             </div>
         </div>
-    </section>
-    <div class="cart">
-        <h2 class="cart-title">Tu Carrito</h2>
-        <i class='bx bxs-trash-alt' id="trash-slot"></i>
-        <div class="cart-content">
-            <div class="total">
-                <div class="total-title">Total</div>
-                <div class="total-price">Q0</div>
-            </div>
-            <button type="button" class="btn-buy">Comprar</button>
-            <i class='bx bx-x' id="close-cart"></i>
-        </div>
-    </div>
 
-    <script src="/app/ScriptProducts.js"></script>
-</body>
-
+        <script src="/app/ScriptProducts.js"></script>
+    </body>
 </html>

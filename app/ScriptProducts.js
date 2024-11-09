@@ -1,44 +1,103 @@
 //carrito
-let cartIcon = document.querySelector('#cart-icon');
-let cart = document.querySelector('.cart');
-let closeCart = document.querySelector('#close-cart');
+let cartIcon = document.querySelector('#cart-icon')
+let cart = document.querySelector('.cart')
+let closeCart = document.querySelector('#close-cart')
 
-products = [{
-
-}]
+products = [
+    {
+        img: 'Tostadas.jpg',
+        title: 'Tacos',
+        price: 10,
+    },
+    {
+        img: 'Tostadas.jpg',
+        title: 'Tortillas de Harina',
+        price: 10,
+    },
+    {
+        img: 'Tostadas.jpg',
+        title: 'Tacos',
+        price: 10,
+    },
+    {
+        img: 'Tostadas.jpg',
+        title: 'Tortillas de Harina',
+        price: 10,
+    },
+    {
+        img: 'Tostadas.jpg',
+        title: 'Tacos',
+        price: 10,
+    },
+    {
+        img: 'Tostadas.jpg',
+        title: 'Tortillas de Harina',
+        price: 10,
+    },
+    {
+        img: 'Tostadas.jpg',
+        title: 'Tacos',
+        price: 10,
+    },
+    {
+        img: 'Tostadas.jpg',
+        title: 'Tortillas de Harina',
+        price: 10,
+    },
+]
 
 cartIcon.onclick = () => {
-    cart.classList.add('active');
-    shop.classList.add('active-cart');
-};
+    cart.classList.add('active')
+    shop.classList.add('active-cart')
+}
 closeCart.onclick = () => {
-    cart.classList.remove('active');
-};
+    cart.classList.remove('active')
+}
 
 if (document.readyState == 'loading') {
-    document.addEventListener('DOMContentLoaded', ready);
+    document.addEventListener('DOMContentLoaded', ready)
 } else {
-    ready();
+    ready()
 }
 
 function ready() {
-    var removeCartButtons = document.getElementsByClassName('cart-remove');
-    console.log(removeCartButtons);
+    var removeCartButtons = document.getElementsByClassName('cart-remove')
+    console.log(removeCartButtons)
     for (var i = 0; i < removeCartButtons.length; i++) {
-        var button = removeCartButtons[i];
-        button.addEventListener('click', removeCartItems);
+        var button = removeCartButtons[i]
+        button.addEventListener('click', removeCartItems)
     }
-    var quantity = document.getElementsByClassName('cart-quantity');
+    var quantity = document.getElementsByClassName('cart-quantity')
     for (var i = 0; i < quantity.length; i++) {
-        var input = quantity[i];
-        input.addEventListener('change', quantityChanged);
+        var input = quantity[i]
+        input.addEventListener('change', quantityChanged)
     }
     var addCart = document.getElementsByClassName('add-cart')
     for (var i = 0; i < addCart.length; i++) {
         var button = addCart[i]
         button.addEventListener('click', addCartClicked)
     }
-    //funcionalidad para que el boton "comprar" 
+    //funcionalidad para que el boton "comprar"
+    const productContainer = document.getElementById('products')
+
+    products.forEach((product) => {
+        const productBox = document.createElement('div')
+        productBox.classList.add('product-box')
+        productBox.innerHTML = `
+        <img src="/Image/${product.img}" alt="" class="product-img">
+        <h2 class="product-title">${product.title}</h2>
+        <span class="price">Q${product.price}</span>
+        <button class='bx bx shopping-bag add'> Agregar</button>
+        `
+        productContainer.appendChild(productBox)
+    })
+    const productButtonsHTMLCollection = document.getElementsByClassName('bx bx shopping-bag add')
+    const productButtons = Array.from(productButtonsHTMLCollection)
+    productButtons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+            addCartClicked(event)
+        })
+    })
 }
 function removeCartItems(event) {
     var buttonClicked = event.target
@@ -62,7 +121,7 @@ function addProductToCart(title, price, img) {
     var cartItems = cartItems.getElementsByClassName('cart-product-title')
     for (var i = 0; i < cartItemsName.length; i++) {
         if (cartItemsNames[i].innerText == title) {
-            alert("Ya tienes este producto en el carrito")
+            alert('Ya tienes este producto en el carrito')
             return
         }
     }
@@ -80,10 +139,7 @@ function addProductToCart(title, price, img) {
     cartItems.append(cartShopBox)
     cartShopBox.getElementsByClassName('cart-remove')[0].addEventListener('click', removeCartItem)
     cartShopBox.getElementsByClassName('cart-quantity')[0].addEventListener('change', quantityChanged)
-
-
 }
-
 
 function quantityChanged(event) {
     var input = event.target
@@ -100,11 +156,10 @@ function updateTotal() {
         var cartBox = cartBoxes[i]
         var priceElement = cartBox.getElementsByClassName('cart-price')[0]
         var quantityElement = cartBox.getElementsByClassName('cart-quantity')[0]
-        var price = parseFloat(priceElement.innerText.replace("Q", ""))
+        var price = parseFloat(priceElement.innerText.replace('Q', ''))
         var quantity = quantityElement.value
-        total = total + (price * quantity)
+        total = total + price * quantity
         total = Math.round(total * 100) / 100
         DocumentTimeline.getElementsByClassName('total-price')[0].innerText = 'Q ' + total
-
     }
 }
