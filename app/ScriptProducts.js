@@ -1,39 +1,44 @@
 //carrito
-let cartIcon = document.querySelector('#cart-icon')
-let cart = document.querySelector('.cart')
-let closeCart = document.querySelector('#close-cart')
+let cartIcon = document.querySelector('#cart-icon');
+let cart = document.querySelector('.cart');
+let closeCart = document.querySelector('#close-cart');
+
+products = [{
+
+}]
 
 cartIcon.onclick = () => {
-    cart.classList.add('active')
-}
+    cart.classList.add('active');
+    shop.classList.add('active-cart');
+};
 closeCart.onclick = () => {
-    cart.classList.remove('active')
-}
+    cart.classList.remove('active');
+};
 
 if (document.readyState == 'loading') {
-    document.addEventListener('DOMContentLoaded')
-
+    document.addEventListener('DOMContentLoaded', ready);
 } else {
-    ready()
+    ready();
 }
+
 function ready() {
-    var removeCartButtons = document.getElementsByClassName('cart-remove')
-    console.log(removeCartButtons)
+    var removeCartButtons = document.getElementsByClassName('cart-remove');
+    console.log(removeCartButtons);
     for (var i = 0; i < removeCartButtons.length; i++) {
-        var button = removeCartButtons[i]
-        button.addEventListener('click', removeCartItems)
+        var button = removeCartButtons[i];
+        button.addEventListener('click', removeCartItems);
     }
-    var quantity = document.getElementsByClassName('cart-quantity')
+    var quantity = document.getElementsByClassName('cart-quantity');
     for (var i = 0; i < quantity.length; i++) {
-        var input = quantityInputs[i]
-        input.addEventListener('change', quantityChange)
+        var input = quantity[i];
+        input.addEventListener('change', quantityChanged);
     }
     var addCart = document.getElementsByClassName('add-cart')
     for (var i = 0; i < addCart.length; i++) {
-        var button = addCart[I]
+        var button = addCart[i]
         button.addEventListener('click', addCartClicked)
     }
-    //funcionalidad para que el boton "comprar" imprima el pdf con la factura y el codigo aleatorio 
+    //funcionalidad para que el boton "comprar" 
 }
 function removeCartItems(event) {
     var buttonClicked = event.target
@@ -51,8 +56,8 @@ function addCartClicked(event) {
     updateTotal()
 }
 function addProductToCart(title, price, img) {
-    var cartShopBox = document.getElementsByClassName('div')
-    cartShopBox.classList.add('cart-box')
+    var cartShopBox = document.getElementsByClassName('product-box')
+    cartShopBox.classList.add('product-box')
     var cartItems = document.getElementsByClassName('cart-content')
     var cartItems = cartItems.getElementsByClassName('cart-product-title')
     for (var i = 0; i < cartItemsName.length; i++) {
@@ -88,7 +93,7 @@ function quantityChanged(event) {
     updateTotal()
 }
 function updateTotal() {
-    var cartContent = document.getElementsByClassName('cart-content')[0]
+    var cartContent = document.getElementsByClassName('product-box')[0]
     var cartBoxes = document.getElementsByClassName('cart-box')
     var total = 0
     for (var i = 0; i < cartBoxes.length; i++) {
