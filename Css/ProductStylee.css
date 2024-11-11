@@ -223,6 +223,15 @@ header {
     font-weight: 500;
 }
 
+.quantity-input {
+    width: 50px;
+    /* Ajusta el ancho según sea necesario */
+    margin: 0 10px;
+    /* Espaciado alrededor del input */
+    text-align: center;
+    /* Centrar el texto dentro del input */
+}
+
 .add-cart {
     position: absolute;
     bottom: 0;
