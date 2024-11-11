@@ -3,14 +3,9 @@ let cartIcon = document.querySelector('#cart-icon');
 let cart = document.querySelector('.cart');
 let closeCart = document.querySelector('#close-cart');
 
-products = [];
-
 cartIcon.onclick = () => {
     cart.classList.add('active');
-    // Verifica que exista `shop` o define `shop` antes de usar esta línea
-    // shop.classList.add('active-cart');
 };
-
 closeCart.onclick = () => {
     cart.classList.remove('active');
 };
@@ -27,14 +22,14 @@ function ready() {
         var button = removeCartButtons[i];
         button.addEventListener('click', removeCartItems);
     }
-    var quantity = document.getElementsByClassName('cart-quantity');
-    for (var i = 0; i < quantity.length; i++) {
-        var input = quantity[i];
+    var quantityInputs = document.getElementsByClassName('cart-quantity');
+    for (var i = 0; i < quantityInputs.length; i++) {
+        var input = quantityInputs[i];
         input.addEventListener('change', quantityChanged);
     }
-    var addCart = document.getElementsByClassName('add-cart');
-    for (var i = 0; i < addCart.length; i++) {
-        var button = addCart[i];
+    var addCartButtons = document.getElementsByClassName('add-cart');
+    for (var i = 0; i < addCartButtons.length; i++) {
+        var button = addCartButtons[i];
         button.addEventListener('click', addCartClicked);
     }
 }
@@ -50,12 +45,13 @@ function addCartClicked(event) {
     var shopProducts = button.parentElement;
     var title = shopProducts.getElementsByClassName('product-title')[0].innerText;
     var price = shopProducts.getElementsByClassName('price')[0].innerText;
-    var img = shopProducts.getElementsByClassName('product-img')[0].src; // Asegúrate de tener una clase 'product-img' en la imagen
-    addProductToCart(title, price, img);
+    var quantity = shopProducts.getElementsByClassName('quantity-input')[0].value; // Obtener la cantidad
+
+    addProductToCart(title, price, quantity);
     updateTotal();
 }
 
-function addProductToCart(title, price, img) {
+function addProductToCart(title, price, quantity) {
     var cartItems = document.getElementsByClassName('cart-content')[0];
     var cartItemsNames = cartItems.getElementsByClassName('cart-product-title');
 
@@ -68,20 +64,18 @@ function addProductToCart(title, price, img) {
 
     var cartBoxContent = `
         <div class="cart-box">
-            <img src="${img}" alt="" class="cart-img">
             <div class="detail-box">
                 <div class="cart-product-title">${title}</div>
                 <div class="cart-price">${price}</div>
-                <input type="number" value="1" class="cart-quantity" min="1">
+                <input type="number" value="${quantity}" class="cart-quantity" min="1">
             </div>
             <i class="cart-remove" name='trash-alt' type='solid'>🗑️</i>
         </div>
     `;
-    cartItems.innerHTML += cartBoxContent;
 
-    var cartBox = cartItems.lastElementChild;
-    cartBox.getElementsByClassName('cart-remove')[0].addEventListener('click', removeCartItems);
-    cartBox.getElementsByClassName('cart-quantity')[0].addEventListener('change', quantityChanged);
+    cartItems.innerHTML += cartBoxContent;
+    cartItems.lastElementChild.getElementsByClassName('cart-remove')[0].addEventListener('click', removeCartItems);
+    cartItems.lastElementChild.getElementsByClassName('cart-quantity')[0].addEventListener('change', quantityChanged);
 }
 
 function quantityChanged(event) {
@@ -103,6 +97,6 @@ function updateTotal() {
         var quantity = quantityElement.value;
         total += price * quantity;
     }
-    total = Math.round(total * 100) / 100;
-    document.getElementsByClassName('total-price')[0].innerText = 'Q ' + total;
+    total = Math.round(total * 100) / 100; // Redondear a dos decimales
+    document.getElementsByClassName('total-price')[0].innerText = 'Total: Q' + total;
 }
